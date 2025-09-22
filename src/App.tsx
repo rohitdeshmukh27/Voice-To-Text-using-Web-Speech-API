@@ -1,11 +1,19 @@
 import { useState, useRef, useEffect } from 'react'
 import './App.css'
 
+// TypeScript declarations for Web Speech API
+declare global {
+  interface Window {
+    SpeechRecognition: any
+    webkitSpeechRecognition: any
+  }
+}
+
 function App() {
   const [transcript, setTranscript] = useState('')
   const [isListening, setIsListening] = useState(false)
   const [error, setError] = useState('')
-  const recognitionRef = useRef<SpeechRecognition | null>(null)
+  const recognitionRef = useRef<any>(null)
   const finalTranscriptRef = useRef('')
 
   useEffect(() => {
@@ -18,7 +26,7 @@ function App() {
       recognition.interimResults = true
       recognition.lang = 'en-US'
 
-      recognition.onresult = (event) => {
+      recognition.onresult = (event: any) => {
         let interimTranscript = ''
 
         for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -33,7 +41,7 @@ function App() {
         setTranscript(finalTranscriptRef.current + interimTranscript)
       }
 
-      recognition.onerror = (event) => {
+      recognition.onerror = (event: any) => {
         setError(`Speech recognition error: ${event.error}`)
         setIsListening(false)
       }
