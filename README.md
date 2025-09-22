@@ -1,69 +1,35 @@
-# React + TypeScript + Vite
+# Voice-to-Text Demo (Browser Only)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple voice-to-text app that runs entirely in the browser using the native **Web Speech API** — no API keys, servers, or external libraries required.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 What I Used
+- **Web Speech API** – browser-built-in voice-to-text functionality  
+- `SpeechRecognition` (`webkitSpeechRecognition` for Chrome/Safari)  
+- No external libraries or services
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ How It Works
+1. Uses your browser’s native speech-recognition engine  
+2. Works offline in most modern browsers  
+3. Converts speech to text in real-time  
+4. Supports English language recognition  
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🌐 Browser Support
+| Browser  | API used               | Notes |
+|----------|-----------------------|-------|
+| Chrome   | `webkitSpeechRecognition` | Full support |
+| Edge     | `webkitSpeechRecognition` | Full support |
+| Firefox  | `SpeechRecognition`        | Limited / experimental |
+| Safari   | `webkitSpeechRecognition`  | Full support |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+> ✅ No API keys or external services are needed – everything runs locally in the browser.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📄 License
+MIT License – feel free to use, modify, and share.
